@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>13_1_NAS con SMB.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="implementando-nas-con-smb">Implementando NAS con SMB</h1>
+<p>O <strong>Escenario</strong> que imos implementar é o seguinte:</p>
+<p><img src="image-150.png" alt="Escenario NAS"></p>
+<p>Pasos a realizar:</p>
+<ol>
+<li><strong>Paso 1 - Configurar a MV Windows Server FSserver-teunome</strong>: Configurar un NOVO SERVIDOR Windows Server chamado <strong>FSserver-teunome</strong> que fará de servidor de ficheiros, como se ve na imaxe do escenario.</li>
+<li><strong>Paso 2 - Agregar o servidor FS á pantalla de administración do DC</strong> e Configurar o <strong>rol SERVIDOR DE ARCHIVOS</strong> no novo servidor, configuramos desde o servidor WSERVER-teunome.</li>
+<li><strong>Paso 3 - Configurar os discos do servidor</strong>: Os discos no servidor NAS serán dous discos de 10GB nunha controladora LSAS.Configurados como un <strong>Storage Space (grupos de almacenamiento), distribución Simple</strong> (similar a <strong>Raid 0</strong>). Crearase un pool <strong>Docencia-Pool</strong> cos dous discos físicos engadidos.</li>
+<li><strong>Paso 4 - Crear un recurso compartido con SMB - Creando un Share:</strong> Crear recurso compartido <strong>Maquinas virtuais</strong> - Compartirá unha carpeta que se chame <strong>Maquinas-Virtuais</strong>, que estará almacenada nun disco virtual dentro do pool &quot;Docencia-Pool&quot;, o disco virtual chamarase tamén <strong>Maquinas-Virtuais</strong></li>
+</ol>
+<blockquote>
+<p>Farase toda a configuración de FSserver de <strong>forma remota</strong> desde o servidor <strong>WINSERVER-teunome</strong>, a través da ferramenta <strong>Administrador do servidor</strong></p>
+</blockquote>
+<p>Vai aplicando estes pasos sobre o teu escenario de VBox da aula, e captura as evidendias que consideres.</p>
+<hr>
+<details>
+<summary><strong>Paso 1 - Configurar a MV Windows Server FSserver-teunome
+</strong></summary>
+<h2 id="paso-1---configurar-a-mv-windows-server-fsserver-teunome">Paso 1 - Configurar a MV Windows Server FSserver-teunome</h2>
+<ul>
+<li>
+<p>Importamos a <strong>.OVA de Windows Server</strong>, ou facemos un <strong>clon enlazado da máquina de Windows Server BASE</strong> (que temos con sysprep). Chamámoslle <strong>FSserver-teunome</strong></p>
+</li>
+<li>
+<p>Cambiamos o nome do hostname.</p>
+</li>
+<li>
+<p>Configuramos a rede.
+<img src="image-149.png" alt="Configuracion básica FSserver"></p>
+</li>
+<li>
+<p>Damos de alta o novo servidor no DOMINIO.
+<img src="image-152.png" alt="Alta servidor no dominio"></p>
+</li>
+<li>
+<p>Metemos ao servidor dentro da UO <strong>Servidores de arquivos</strong>
+<img src="image-153.png" alt="UO Servidores de arquivos"></p>
+</li>
+<li>
+<p>Agregamos o servidor ao DNS.
+<img src="image-155.png" alt="DNS"></p>
+</li>
+</ul>
+</details>
+<details>
+<summary><strong> Paso 2 - Agregar o servidor FS á pantalla de administración do DC e aplicar rol Servidor Arquivos</strong></summary>
+<h2 id="paso-2---agregar-o-servidor-fs-%C3%A1-pantalla-de-administraci%C3%B3n-do-dc-e-aplicar-rol-servidor-arquivos">Paso 2 - Agregar o servidor FS á pantalla de administración do DC e aplicar rol Servidor Arquivos</h2>
+<p>Desde <strong>DCprofe</strong> asignamos o servidor:
+<img src="image-151.png" alt="Administrar-&gt;Agregar Servidores">
+Buscamos o nome do servidor de ficheiros e engadímolo:
+<img src="image-154.png" alt="Engadir servidor de ficheiros"></p>
+<p>Dentro da consola de Administrar Servidor -&gt;<strong>Todos los servidores</strong> vemos que xa está o novo servidor engadido:
+<img src="image-156.png" alt="Todos los servidores"></p>
+<h3 id="paso-2a---agregar-o-rol-servidor-de-ficheiros">Paso 2A - Agregar o rol Servidor de Ficheiros</h3>
+<p>Desde a <strong>consola do DCPROFE</strong>, imos agregar un <strong>novo rol</strong>, e agregarémolo sobre o servidor FSserver-PROFE.
+<img src="image-157.png" alt="Agregar novo rol"></p>
+<p>Agregar rol Servidor de archivos dentro de Servidor iSCSI.</p>
+<p><img src="image-158.png" alt="Agregar rol Servidor de archivos dentro de Servidor iSCSI"></p>
+<p>Continuamos con <strong>Seguinte</strong> en Característica, sen modificar nada, e en Confirmación <strong>instalamos</strong>.</p>
+<p><img src="image-159.png" alt="Confirmacion instalar">
+<img src="image-160.png" alt="Instalando"></p>
+</details>
+<details>
+<summary><strong> Paso 3 - Configurar os discos do servidor (Storage Space - Simple)</strong></summary>
+<h2 id="paso-3---configurar-os-discos-do-servidor-sas-storage-space---simple">Paso 3 - Configurar os discos do servidor (SAS-Storage Space - Simple)</h2>
+<p>Imos asignar dous discos de 10GB ao servidor nunha controladora LSAS.</p>
+<p><img src="image-162.png" alt="2 discos LSAS"></p>
+<p>Configuramos os espazos de almacenamento no <strong>Servizo de arquivos</strong>
+<img src="image-163.png" alt="administrador do servidor"></p>
+<p>Creamos un novo grupo de almacenamento -</p>
+<p><img src="image-164.png" alt="Grupos de almacenamiento novo"></p>
+<p>Imos chamarlle <strong>Docencia-Pool</strong>.
+<img src="image-170.png" alt="Docencia-Pool"></p>
+<p>Indicámoslle que vai empregar os dous discos físicos que temos.
+<img src="image-165.png" alt="Novo grupo con dosus discos">
+Confirmamos:<img src="image-171.png" alt="Confirmación"></p>
+<p>Creamos un novo <strong>Disco Virtual</strong>
+<img src="image-166.png" alt="Disco Virtual"></p>
+<p>Escollemos o grupo de almacenamento:
+<img src="image-167.png" alt="grupo almacenamento escollido"></p>
+<p><img src="image-168.png" alt="Creado o novo Disco virtual">
+Creamos un Disco Virtual de <strong>distribución simple</strong>, similar a Raid 0.
+<img src="image-172.png" alt="raid 0 - simple"></p>
+<p>Tipo de aprovisionamiento, fijo.
+<img src="image-173.png" alt="Aprovisionamiento fijo"></p>
+<p>Se escollemos “aprovisionamento fijo” non poderemos crear un disco virtual de maior tamaño que o dispoñible no pool. Se escollemos “aprovisionamento delgado” non temos ese problema.
+<img src="image-174.png" alt="erro con máis tamaño"></p>
+<p>Escollemos o tamaño total que temos 6GB, e quedaría espazo para máis discos virtuais no mesmo pool.
+<img src="image-176.png" alt="disco virtual maquinas-virtuais 6GB"></p>
+<p>No último paso, créase o <strong>volume</strong>.
+<img src="image-177.png" alt="Creación volume"></p>
+<p>Creamos un volume de todo o espazo.
+<img src="image-178.png" alt="Volume  de todo o espazo"></p>
+<p><img src="image-179.png" alt="tamaño"></p>
+<p>Asignámoslle a letra P.
+<img src="image-180.png" alt="Letra P"></p>
+<p>Configuramos o sistema de arquivos, imos aplicarlle <strong>NTFS</strong> neste caso e darlle a etiqueta de volumen <strong>Maquinas-Virtuais</strong>:
+<img src="image-181.png" alt="Sistema de ficheiros"></p>
+<p>Vemos o resume do <strong>Volume</strong>:
+<img src="image-182.png" alt="volume confirmación"></p>
+<p>Vemos en <strong>VOLÚMENES</strong>, que aparece o novo volumen.
+<img src="image-183.png" alt="Novos volúmenes"></p>
+</details>
+<details>
+<summary><strong> Paso 4 - Crear un recurso compartido con SMB - Creando un Share</strong></summary>
+<h2 id="paso-4---crear-un-recurso-compartido-con-smb---creando-un-share">Paso 4 - Crear un recurso compartido con SMB - Creando un Share</h2>
+<p>Crearemos o share, <strong>Maquinas-Virtuais</strong>, dentro do volume Maquinas-Virtuais creado no servidor FSserver-PROFE.</p>
+<p>Imos a <strong>Servicios de archivos y almacenamiento</strong>
+<img src="image-184.png" alt="Servicios de arhivos y almacenamiento"></p>
+<p>Vemos os recursos compartidos (<strong>shares</strong>) xa creados previamente e a súa ruta no sistema de arquivos. En <strong>DC-PROFE</strong> cando instalas Active Directory créanse NETLOGON e SYSVOL:</p>
+<ul>
+<li><strong>NETLOGON</strong>: gárdanse <strong>scripts de inicio de sesión</strong> dos usuarios.</li>
+<li><strong>SYSVOL</strong>: é a forma que ten o controlador de dominio de facer chegar as <strong>GPO</strong> aos membros do domino.</li>
+</ul>
+<p>Imos crear un novo recurso: escollemos <strong>Nuevo recurso compartido</strong>
+<img src="image-185.png" alt="Nuevo recurso compartido"></p>
+<p>Debemos escoller o <strong>perfil do recurso compartido</strong> entre:</p>
+<ul>
+<li><strong>SMB-Rápido</strong>: é o método máis rápido para compartir un directorio. Permite escoller o servidor, o nome, a ruta local e os permisos.<strong>Escollemos esta opción</strong>.</li>
+<li><strong>SMB-Avanzado</strong>: permite o mesmo que o perfil rápido, escoller os propietarios dos arquivos, clasificación dos datos por defecto e cuotas. Necesita o rol adicional de Administrador de  recursos do servidor de arquivos”.</li>
+<li><strong>SMB-Aplicacións</strong>: configuración especializada para o sistema de virtualización de Microsoft Hiper-V, bases de datos e outras aplicacións de servidores.
+<img src="image-186.png" alt="SMB-rapido"></li>
+</ul>
+<p>Escollemos o servidor onde vai estar o recurso compartido e o volumen onde se creará:
+<img src="image-187.png" alt="servidor-volume do recurso compartido"></p>
+<p>Indicamos o nome do recurso compartido e a ruta local e remota para poder acceder desde outros equipos:
+<img src="image-188.png" alt="Ruta Remota"></p>
+<p>Deixamos todas as opcións sen marcar:
+<img src="image-189.png" alt="Parametros compartición"></p>
+<p>Deixamos todos os permisos por defecto, xa os modificaremos máis adiante.
+<img src="image-190.png" alt="Permisos"></p>
+<p>Continuamos e finalizamos, e podemos ver que aparece o recurso compartido:</p>
+<p><img src="image-191.png" alt="Recurso Compartido"></p>
+<p>Se imos ao <strong>explorador de arquivos</strong> de calquera dos PCs da rede interna podemos ver que xa está compartida a carpeta:
+<img src="image-192.png" alt="Carpeta compartida Maquinas-Virtuais"></p>
+
+</body>
+</html>

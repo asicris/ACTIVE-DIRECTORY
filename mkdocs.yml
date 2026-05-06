@@ -1,0 +1,138 @@
+site_name: Active Directory - Documentación
+site_description: Documentación completa sobre Active Directory, infraestrutura de rede, integración Linux e Samba4
+site_author: ASICRIS
+site_url: https://asicris.github.io/ACTIVE-DIRECTORY/
+repo_url: https://github.com/asicris/ACTIVE-DIRECTORY
+repo_name: ACTIVE-DIRECTORY
+edit_uri: edit/main/docs/
+
+# Tema Material para MkDocs
+theme:
+  name: material
+  language: gl
+  locale: gl_ES
+  favicon: 'https://raw.githubusercontent.com/asicris/ACTIVE-DIRECTORY/main/docs/images/favicon.ico'
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo: 'https://raw.githubusercontent.com/asicris/ACTIVE-DIRECTORY/main/docs/images/logo.png'
+
+# Extensións
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+  - tables
+  - admonition
+  - pymdownx.details
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 2
+
+# Complementos
+plugins:
+  - search:
+      lang: gl
+  - minify:
+      minify_html: true
+
+# Navegación
+nav:
+  - Inicio: index.md
+  
+  - '1. Infraestrutura Base e Rede':
+    - Configurar Router NAT: 00_CONFIGURAR_ROUTERNAT.md
+    - Escenario Inicial: 01_Escenario_Inicial_A_Configurar.md
+    - Outro Escenario - Recuperación: 01_OUTRO_ESCENARIO_MAIO-PROXECTO-RECUPERACION.md
+  
+  - '2. Windows Server':
+    - Versións de Windows Server: 02_VersionsWindowsServer.md
+    - Instalación de Windows Server: 03_InstalacionWindowsServer.md
+    - Configuración de Rede (MV): 04_ConfiguracionRedeMV.md
+  
+  - '3. Domain Controller (DC)':
+    - O Controlador de Dominio: 05_OControladorDedominio.md
+    - Instalar Domain Controller: 06_Instalar_DomainControler.md
+  
+  - '4. Unión ao Dominio - Windows':
+    - Unir Equipos Windows ao Dominio: 07_UnirEquiposWindowsaoDomino.md
+    - Boas Prácticas: 11_BoasPracticasUnirDominio.md
+  
+  - '5. Integración Linux - Active Directory':
+    - Protocolos e Pasos: 08_PASOS-PROTOCOLOS-INTERVEÑEN-UNION-LINUX-AD.md
+    - Unir Ubuntu a AD de Windows: 09_UnirUbuntuaDominioADWindows.md
+  
+  - '6. Xestión do Dominio':
+    - Organización de OUs e Grupos: 10_OrganizacionOUGrupos.md
+  
+  - '7. Políticas de Grupo (GPO)':
+    - Políticas de Grupo (GPO): 12_GPO.md
+    - Tarefa - Aplicar GPO en AD: 13_Tarefa-aplicarGPOenAD.md
+  
+  - '8. Xestión de Almacenamento':
+    - Xestión do Almacenamento: 14_Xestion do almacenamento.md
+    - Exercicio Xestión Almacenamento: 14_1_Exercicio_XestionAlmacenamento.md
+    - Solución Exercicio: 14_1_solucion_Exercicio_XestionAlmacenamento.md
+    - DAS e Carpetas de Usuarios: 15_DAS_e_Carpetas_Usuarios.md
+    - Tarefa - Configurar DAS e Carpetas: 16_Tarefa-ConfigurarDAS-CarpetasUsuarios.md
+    - NAS Almacenamento: 21_NAS_almacenamento.md
+  
+  - '9. Perfis Móbiles e Redirección':
+    - Perfis Móbiles: 17_PerfisMobiles.md
+    - Tarefa - Perfis Móbiles: 18_Tarefa_Perfis_Mobiles.md
+    - Redirección de Carpetas: 19_Redireccion_carpetas.md
+    - Tarefa - Redirección de Carpetas: 20_Tarefa_Redireccion_Carpetas.md
+  
+  - '10. NAS (Network Attached Storage)':
+    - NAS con SMB: 22_NAS_con_SMB.md
+    - NAS con NFS: 23_NAS_con_NFS.md
+  
+  - '11. Samba4 como Domain Controller':
+    - Servidor DC con Samba4: 24_ServidorDC_LinuxSamba4.md
+    - Unir Windows a DC Samba4: 25_UnirEquipoWindows_DCenSamba4.md
+    - Configurar RSAT en Windows: 27_ConfigurarRSATenWindows.md
+  
+  - '12. Integración Linux - Samba':
+    - Unir Linux a Dominio Samba: 20_UnirEquioLinux-DOMINIOSAMBA.md
+    - Unir Linux a Dominio Samba (ChatGPT): 21_unirequipolinuxdominosamba-chatgpt.md
+
+# Copyright
+copyright: 'Copyright &copy; 2024 ASICRIS - Licencia CC0 1.0 Universal'
+
+# Configuración para GitHub Pages
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
