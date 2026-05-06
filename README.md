@@ -106,4 +106,4 @@ Este proxecto está licenciado baixo Creative Commons (CC0 1.0 Universal). Consu
 
 ## 👤 Autor/Colaboradores
 
-Documentación de titoriais para sistemas de información en galego.
+Documentación de titoriais para sistemas de información en galego. Por Cristina Puga Barreiros
