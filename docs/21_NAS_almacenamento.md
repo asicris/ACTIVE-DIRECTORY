@@ -8,6 +8,7 @@ tags:
   - Server
   - windows
 status: published
+nav_order: 25
 ---
 
 # Xestión do almacenamento NAS

@@ -8,6 +8,8 @@ tags:
   - Server
   - windows
 status: published
+nav_order: 8
+
 ---
 
 # 1. Instalación do Controlador de Dominio

@@ -1,3 +1,18 @@
+---
+title: Unir equipo Windows a dominio gnu/linux con Samba 4
+author: Cristina Puga Barreiros
+date: 2026-05-06
+description: Documentación técnica sobre configuración dun NAS con NFS
+tags:
+  - ActiveDirectory
+  - Server
+  - dominio
+  - gnu/linux
+  - samba4
+status: published
+nav_order: 29
+---
+
 # Unir equipo Windows ao Controlador de Dominio Samba4
 
 ## Configuracións a facer

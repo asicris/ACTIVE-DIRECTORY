@@ -8,6 +8,8 @@ tags:
   - management
   - windows
 status: published
+nav_order: 6
+
 ---
 
 # Configuración e modo de rede

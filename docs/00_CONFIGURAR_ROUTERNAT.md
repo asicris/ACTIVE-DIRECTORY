@@ -1,6 +1,7 @@
 ---
 title: Guía de Creación de infraestrutura Active Directory - ROUTER NAT
 author: Cristina Puga Barreiros
+nav_order: 1
 date: 2026-05-06
 description: Documentación técnica a configuración dun router NAT en Linux sobre unha MV cunha interface en modo NAT e outra en modo Rede Interna.
 tags:

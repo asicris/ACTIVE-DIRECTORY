@@ -8,6 +8,7 @@ tags:
   - management
   - windows
 status: published
+nav_order: 2
 ---
 
 # PROXECTO CONTROLADOR DE DOMINIO WINDOWS nun ESCENARIO DE REDE con Clientes Windows e GNU/Linux

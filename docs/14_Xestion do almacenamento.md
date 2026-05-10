@@ -13,6 +13,8 @@ tags:
   - Volúmenes
   - RAID
 status: published
+nav_order: 18
+
 ---
 
 # Técnicas de xestión do almacenamento

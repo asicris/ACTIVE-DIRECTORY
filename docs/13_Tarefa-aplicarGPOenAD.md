@@ -8,6 +8,8 @@ tags:
   - Server
   - windows
 status: published
+nav_order: 15
+
 ---
 
 # EXERCICIO creando GPO no servidor e comprobándoas nos CLIENTES WINDOWS

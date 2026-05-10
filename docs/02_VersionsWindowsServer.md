@@ -8,6 +8,8 @@ tags:
   - management
   - windows
 status: published
+nav_order: 4
+
 ---
 
 # Edicións de Windows Server 2022

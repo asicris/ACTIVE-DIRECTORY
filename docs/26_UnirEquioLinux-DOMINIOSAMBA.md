@@ -1,3 +1,17 @@
+---
+title: Unir equipo Linux no dominio GNU/Linux Samba 4
+author: Cristina Puga Barreiros
+date: 2026-05-06
+description: Documentación técnica sobre configuración dun NAS con NFS
+tags:
+  - ActiveDirectory
+  - Server
+  - dominio
+  - gnu/linux
+  - samba4
+status: published
+nav_order: 30
+---
 # Integrar equipo Linux no dominio
 
 Imos empregar o paquete **SSSD** o que permitirá que os usuarios do dominio inicien sesión directamente na pantalla de login do sistema (SDDM).

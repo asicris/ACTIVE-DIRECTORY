@@ -1,3 +1,18 @@
+---
+title: Controlador de Dominio (DC) en Linux con Samba 4
+author: Cristina Puga Barreiros
+date: 2026-05-06
+description: Documentación técnica sobre configuración dun NAS con NFS
+tags:
+  - ActiveDirectory
+  - Server
+  - dominio
+  - gnu/linux
+  - samba4
+status: published
+nav_order: 28
+---
+
 # Controlador de Dominio (DC) en Linux con Samba 4
 
 **Samba4** é a evolución do proxecto Samba que **permite que un servidor Linux funcione como un Controlador de Dominio de Active Directory** (AD DC). Isto significa que pode interactuar con clientes Windows (e tamén Linux ou macOS) de forma nativa, tal e como o faría un servidor Windows Server.

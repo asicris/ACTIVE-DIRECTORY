@@ -9,6 +9,7 @@ tags:
   - windows
   - SMB
 status: published
+nav_order: 26
 ---
 
 # Implementando NAS con SMB

@@ -8,6 +8,8 @@ tags:
   - Server
   - windows
 status: published
+nav_order: 13
+
 ---
 
 # Boas prácticas na unión de equipos ao dominio

@@ -10,6 +10,8 @@ tags:
   - GNU/Linux
   - Ubuntu
 status: published
+nav_order: 12
+
 ---
 
 # Xestión básica de Usuarios e grupos de Active Directory

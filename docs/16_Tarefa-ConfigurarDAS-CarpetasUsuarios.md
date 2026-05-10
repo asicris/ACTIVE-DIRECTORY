@@ -1,3 +1,17 @@
+---
+title: ROXECTO CONTROLADOR DE DOMINIO WINDOWS ESCENARIO ACTUAL de rede - OU - Grupos - Usuarios
+author: Cristina Puga Barreiros
+date: 2026-05-06
+description: Documentación técnica sobre configuración de almacenamento DAS.
+tags:
+  - ActiveDirectory
+  - Server
+  - windows
+status: published
+nav_order: 20
+
+---
+
 # PROXECTO CONTROLADOR DE DOMINIO WINDOWS 
 ## ESCENARIO ACTUAL de rede - OU - Grupos - Usuarios
 

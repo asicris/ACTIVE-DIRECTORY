@@ -1,3 +1,18 @@
+---
+title: Configurar RSAT en Windows 11 para xestionar o dominio Samba de forma gráfica
+author: Cristina Puga Barreiros
+date: 2026-05-06
+description: Documentación técnica sobre configuración dun NAS con NFS
+tags:
+  - ActiveDirectory
+  - Server
+  - dominio
+  - gnu/linux
+  - samba4
+status: published
+nav_order: 31
+---
+
 # Configurar RSAT en Windows 11 para xestionar o dominio Samba de forma gráfica
 
 RSAT son ferramentas que nos permiten configuar gráficamente o dominio Samba4:

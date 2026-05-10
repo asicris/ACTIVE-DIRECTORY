@@ -1,4 +1,3 @@
-
 ---
 title: Guía de Creación de infraestrutura Active Directory - PROTOCOLOS E PROCESO DE UNIÓN A UN DOMINIO WINDOWS DE EQUIPOS LINUX
 author: Cristina Puga Barreiros
@@ -11,6 +10,8 @@ tags:
   - GNU/Linux
   - Ubuntu
 status: published
+nav_order: 10
+
 ---
 
 # Esquema: Proceso de Login Linux en Active Directory (AD)

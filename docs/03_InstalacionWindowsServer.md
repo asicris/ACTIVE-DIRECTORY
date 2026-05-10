@@ -8,6 +8,8 @@ tags:
   - server
   - windows
 status: published
+nav_order: 5
+
 ---
 # Instalación de Windows Server
 

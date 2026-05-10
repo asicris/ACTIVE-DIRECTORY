@@ -8,6 +8,8 @@ tags:
   - Server
   - windows
 status: published
+nav_order: 14
+
 ---
 
 # Políticas de grupo (GPO)

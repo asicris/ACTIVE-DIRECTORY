@@ -8,6 +8,7 @@ tags:
   - Server
   - windows
 status: published
+nav_order: 24
 ---
 
 # Exercicio Redirección Carpetas

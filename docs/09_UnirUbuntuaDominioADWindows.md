@@ -10,6 +10,8 @@ tags:
   - GNU/Linux
   - Ubuntu
 status: published
+nav_order: 11
+
 ---
 
 # Ubuntu como cliente de Active Directory

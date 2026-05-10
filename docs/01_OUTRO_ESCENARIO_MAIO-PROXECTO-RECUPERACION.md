@@ -1,3 +1,17 @@
+---
+title: Guía de Creación de infraestrutura Active Directory - ESCENARIO INICIAL
+author: Cristina Puga Barreiros
+date: 2026-05-06
+description: Escenario inicial dun proxecto de creación dun dominio en Active Directory.
+tags:
+  - ActiveDirectory
+  - management
+  - windows
+status: published
+nav_order: 3
+
+---
+
 # PROXECTO CONTROLADOR DE DOMINIO WINDOWS nun ESCENARIO DE REDE con Clientes Windows e GNU/Linux
 
 Vai facendo os apartados que se piden, e capturando evidencias básicas, onde se vexa que realizaches as configuracións.
